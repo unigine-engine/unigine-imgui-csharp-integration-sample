@@ -14,7 +14,7 @@ public class ImGuiImpl
 	static MeshDynamic imgui_mesh;
 	static Material imgui_material;
 	static ImDrawDataPtr frame_draw_data;
-
+	static ImGuiKey[] keymap = new ImGuiKey[(int)Input.KEY.NUM_KEYS];
 	static Input.MOUSE_HANDLE prev_mouse_handle;
 
 	struct StyleSizes
@@ -67,62 +67,159 @@ public class ImGuiImpl
 		io.BackendFlags |= ImGuiBackendFlags.HasSetMousePos;
 		io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;
 
-		io.KeyMap[(int)ImGuiKey.Tab] = (int)Input.KEY.TAB;
-		io.KeyMap[(int)ImGuiKey.LeftArrow] = (int)Input.KEY.LEFT;
-		io.KeyMap[(int)ImGuiKey.RightArrow] = (int)Input.KEY.RIGHT;
-		io.KeyMap[(int)ImGuiKey.UpArrow] = (int)Input.KEY.UP;
-		io.KeyMap[(int)ImGuiKey.DownArrow] = (int)Input.KEY.DOWN;
-		io.KeyMap[(int)ImGuiKey.PageUp] = (int)Input.KEY.PGUP;
-		io.KeyMap[(int)ImGuiKey.PageDown] = (int)Input.KEY.PGDOWN;
-		io.KeyMap[(int)ImGuiKey.Home] = (int)Input.KEY.HOME;
-		io.KeyMap[(int)ImGuiKey.End] = (int)Input.KEY.END;
-		io.KeyMap[(int)ImGuiKey.Insert] = (int)Input.KEY.INSERT;
-		io.KeyMap[(int)ImGuiKey.Delete] = (int)Input.KEY.DELETE;
-		io.KeyMap[(int)ImGuiKey.Backspace] = (int)Input.KEY.BACKSPACE;
-		io.KeyMap[(int)ImGuiKey.Space] = (int)Input.KEY.SPACE;
-		io.KeyMap[(int)ImGuiKey.Enter] = (int)Input.KEY.ENTER;
-		io.KeyMap[(int)ImGuiKey.Escape] = (int)Input.KEY.ESC;
-		io.KeyMap[(int)ImGuiKey.KeyPadEnter] = (int)Input.KEY.ENTER;
-		io.KeyMap[(int)ImGuiKey.A] = (int)Input.KEY.A;
-		io.KeyMap[(int)ImGuiKey.C] = (int)Input.KEY.C;
-		io.KeyMap[(int)ImGuiKey.V] = (int)Input.KEY.V;
-		io.KeyMap[(int)ImGuiKey.X] = (int)Input.KEY.X;
-		io.KeyMap[(int)ImGuiKey.Y] = (int)Input.KEY.Y;
-		io.KeyMap[(int)ImGuiKey.Z] = (int)Input.KEY.Z;
-
-		io.ClipboardUserData = IntPtr.Zero;
+        keymap[(int)Input.KEY.ESC] = ImGuiKey.Escape;
+        keymap[(int)Input.KEY.F1] = ImGuiKey.F1;
+        keymap[(int)Input.KEY.F2] = ImGuiKey.F2;
+        keymap[(int)Input.KEY.F3] = ImGuiKey.F3;
+        keymap[(int)Input.KEY.F4] = ImGuiKey.F4;
+        keymap[(int)Input.KEY.F5] = ImGuiKey.F5;
+        keymap[(int)Input.KEY.F6] = ImGuiKey.F6;
+        keymap[(int)Input.KEY.F7] = ImGuiKey.F7;
+        keymap[(int)Input.KEY.F8] = ImGuiKey.F8;
+        keymap[(int)Input.KEY.F9] = ImGuiKey.F9;
+        keymap[(int)Input.KEY.F10] = ImGuiKey.F10;
+        keymap[(int)Input.KEY.F11] = ImGuiKey.F11;
+        keymap[(int)Input.KEY.F12] = ImGuiKey.F12;
+        keymap[(int)Input.KEY.PRINTSCREEN] = ImGuiKey.None;
+        keymap[(int)Input.KEY.SCROLL_LOCK] = ImGuiKey.None;
+        keymap[(int)Input.KEY.PAUSE] = ImGuiKey.None;
+        keymap[(int)Input.KEY.BACK_QUOTE] = ImGuiKey.None;
+        keymap[(int)Input.KEY.DIGIT_1] = ImGuiKey._1;
+        keymap[(int)Input.KEY.DIGIT_2] = ImGuiKey._2;
+        keymap[(int)Input.KEY.DIGIT_3] = ImGuiKey._3;
+        keymap[(int)Input.KEY.DIGIT_4] = ImGuiKey._4;
+        keymap[(int)Input.KEY.DIGIT_5] = ImGuiKey._5;
+        keymap[(int)Input.KEY.DIGIT_6] = ImGuiKey._6;
+        keymap[(int)Input.KEY.DIGIT_7] = ImGuiKey._7;
+        keymap[(int)Input.KEY.DIGIT_8] = ImGuiKey._8;
+        keymap[(int)Input.KEY.DIGIT_9] = ImGuiKey._9;
+        keymap[(int)Input.KEY.DIGIT_0] = ImGuiKey._0;
+        keymap[(int)Input.KEY.MINUS] = ImGuiKey.Minus;
+        keymap[(int)Input.KEY.EQUALS] = ImGuiKey.Equal;
+        keymap[(int)Input.KEY.BACKSPACE] = ImGuiKey.Backspace;
+        keymap[(int)Input.KEY.TAB] = ImGuiKey.Tab;
+        keymap[(int)Input.KEY.Q] = ImGuiKey.Q;
+        keymap[(int)Input.KEY.W] = ImGuiKey.W;
+        keymap[(int)Input.KEY.E] = ImGuiKey.E;
+        keymap[(int)Input.KEY.R] = ImGuiKey.R;
+        keymap[(int)Input.KEY.T] = ImGuiKey.T;
+        keymap[(int)Input.KEY.Y] = ImGuiKey.Y;
+        keymap[(int)Input.KEY.U] = ImGuiKey.U;
+        keymap[(int)Input.KEY.I] = ImGuiKey.I;
+        keymap[(int)Input.KEY.O] = ImGuiKey.O;
+        keymap[(int)Input.KEY.P] = ImGuiKey.P;
+        keymap[(int)Input.KEY.LEFT_BRACKET] = ImGuiKey.LeftBracket;
+        keymap[(int)Input.KEY.RIGHT_BRACKET] = ImGuiKey.RightBracket;
+        keymap[(int)Input.KEY.ENTER] = ImGuiKey.Enter;
+        keymap[(int)Input.KEY.CAPS_LOCK] = ImGuiKey.CapsLock;
+        keymap[(int)Input.KEY.A] = ImGuiKey.A;
+        keymap[(int)Input.KEY.S] = ImGuiKey.S;
+        keymap[(int)Input.KEY.D] = ImGuiKey.D;
+        keymap[(int)Input.KEY.F] = ImGuiKey.F;
+        keymap[(int)Input.KEY.G] = ImGuiKey.G;
+        keymap[(int)Input.KEY.H] = ImGuiKey.H;
+        keymap[(int)Input.KEY.J] = ImGuiKey.J;
+        keymap[(int)Input.KEY.K] = ImGuiKey.K;
+        keymap[(int)Input.KEY.L] = ImGuiKey.L;
+        keymap[(int)Input.KEY.SEMICOLON] = ImGuiKey.Semicolon;
+        keymap[(int)Input.KEY.QUOTE] = ImGuiKey.None;
+        keymap[(int)Input.KEY.BACK_SLASH] = ImGuiKey.Backslash;
+        keymap[(int)Input.KEY.LEFT_SHIFT] = ImGuiKey.LeftShift;
+        keymap[(int)Input.KEY.LESS] = ImGuiKey.None;
+        keymap[(int)Input.KEY.Z] = ImGuiKey.Z;
+        keymap[(int)Input.KEY.X] = ImGuiKey.X;
+        keymap[(int)Input.KEY.C] = ImGuiKey.C;
+        keymap[(int)Input.KEY.V] = ImGuiKey.V;
+        keymap[(int)Input.KEY.B] = ImGuiKey.B;
+        keymap[(int)Input.KEY.N] = ImGuiKey.N;
+        keymap[(int)Input.KEY.M] = ImGuiKey.M;
+        keymap[(int)Input.KEY.COMMA] = ImGuiKey.Comma;
+        keymap[(int)Input.KEY.DOT] = ImGuiKey.Comma;
+        keymap[(int)Input.KEY.SLASH] = ImGuiKey.None;
+        keymap[(int)Input.KEY.RIGHT_SHIFT] = ImGuiKey.RightShift;
+        keymap[(int)Input.KEY.LEFT_CTRL] = ImGuiKey.LeftCtrl;
+        keymap[(int)Input.KEY.LEFT_CMD] = ImGuiKey.LeftSuper;
+        keymap[(int)Input.KEY.LEFT_ALT] = ImGuiKey.LeftAlt;
+        keymap[(int)Input.KEY.SPACE] = ImGuiKey.Space;
+        keymap[(int)Input.KEY.RIGHT_ALT] = ImGuiKey.RightAlt;
+        keymap[(int)Input.KEY.RIGHT_CMD] = ImGuiKey.RightSuper;
+        keymap[(int)Input.KEY.MENU] = ImGuiKey.None;
+        keymap[(int)Input.KEY.RIGHT_CTRL] = ImGuiKey.RightCtrl;
+        keymap[(int)Input.KEY.INSERT] = ImGuiKey.Insert;
+        keymap[(int)Input.KEY.DELETE] = ImGuiKey.Delete;
+        keymap[(int)Input.KEY.HOME] = ImGuiKey.Home;
+        keymap[(int)Input.KEY.END] = ImGuiKey.End;
+        keymap[(int)Input.KEY.PGUP] = ImGuiKey.PageUp;
+        keymap[(int)Input.KEY.PGDOWN] = ImGuiKey.PageDown;
+        keymap[(int)Input.KEY.UP] = ImGuiKey.UpArrow;
+        keymap[(int)Input.KEY.LEFT] = ImGuiKey.LeftArrow;
+        keymap[(int)Input.KEY.DOWN] = ImGuiKey.DownArrow;
+        keymap[(int)Input.KEY.RIGHT] = ImGuiKey.RightArrow;
+        keymap[(int)Input.KEY.NUM_LOCK] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIVIDE] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_MULTIPLY] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_MINUS] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_7] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_8] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_9] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_PLUS] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_4] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_5] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_6] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_1] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_2] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_3] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_ENTER] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DIGIT_0] = ImGuiKey.None;
+        keymap[(int)Input.KEY.NUMPAD_DOT] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_SHIFT] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_CTRL] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_ALT] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_CMD] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_UP] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_LEFT] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_DOWN] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_RIGHT] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_ENTER] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_DELETE] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_INSERT] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_HOME] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_END] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_PGUP] = ImGuiKey.None;
+        keymap[(int)Input.KEY.ANY_PGDOWN] = ImGuiKey.None;
 
 		create_font_texture();
 		create_imgui_mesh();
 		create_imgui_material();
 
-		ImGui.StyleColorsDark();
+		{
+			ImGui.StyleColorsDark();
+			var style = ImGui.GetStyle();
 
-		var style = ImGui.GetStyle();
-
-		sourceSizes.WindowPadding = style.WindowPadding;
-		sourceSizes.WindowRounding = style.WindowRounding;
-		sourceSizes.WindowMinSize = style.WindowMinSize;
-		sourceSizes.ChildRounding = style.ChildRounding;
-		sourceSizes.PopupRounding = style.PopupRounding;
-		sourceSizes.FramePadding = style.FramePadding;
-		sourceSizes.FrameRounding = style.FrameRounding;
-		sourceSizes.ItemSpacing = style.ItemSpacing;
-		sourceSizes.ItemInnerSpacing = style.ItemInnerSpacing;
-		sourceSizes.CellPadding = style.CellPadding;
-		sourceSizes.TouchExtraPadding = style.TouchExtraPadding;
-		sourceSizes.IndentSpacing = style.IndentSpacing;
-		sourceSizes.ColumnsMinSpacing = style.ColumnsMinSpacing;
-		sourceSizes.ScrollbarSize = style.ScrollbarSize;
-		sourceSizes.ScrollbarRounding = style.ScrollbarRounding;
-		sourceSizes.GrabMinSize = style.GrabMinSize;
-		sourceSizes.GrabRounding = style.GrabRounding;
-		sourceSizes.LogSliderDeadzone = style.LogSliderDeadzone;
-		sourceSizes.TabRounding = style.TabRounding;
-		sourceSizes.TabMinWidthForCloseButton = style.TabMinWidthForCloseButton;
-		sourceSizes.DisplayWindowPadding = style.DisplayWindowPadding;
-		sourceSizes.DisplaySafeAreaPadding = style.DisplaySafeAreaPadding;
-		sourceSizes.MouseCursorScale = style.MouseCursorScale;
+			sourceSizes.WindowPadding = style.WindowPadding;
+			sourceSizes.WindowRounding = style.WindowRounding;
+			sourceSizes.WindowMinSize = style.WindowMinSize;
+			sourceSizes.ChildRounding = style.ChildRounding;
+			sourceSizes.PopupRounding = style.PopupRounding;
+			sourceSizes.FramePadding = style.FramePadding;
+			sourceSizes.FrameRounding = style.FrameRounding;
+			sourceSizes.ItemSpacing = style.ItemSpacing;
+			sourceSizes.ItemInnerSpacing = style.ItemInnerSpacing;
+			sourceSizes.CellPadding = style.CellPadding;
+			sourceSizes.TouchExtraPadding = style.TouchExtraPadding;
+			sourceSizes.IndentSpacing = style.IndentSpacing;
+			sourceSizes.ColumnsMinSpacing = style.ColumnsMinSpacing;
+			sourceSizes.ScrollbarSize = style.ScrollbarSize;
+			sourceSizes.ScrollbarRounding = style.ScrollbarRounding;
+			sourceSizes.GrabMinSize = style.GrabMinSize;
+			sourceSizes.GrabRounding = style.GrabRounding;
+			sourceSizes.LogSliderDeadzone = style.LogSliderDeadzone;
+			sourceSizes.TabRounding = style.TabRounding;
+			sourceSizes.TabMinWidthForCloseButton = style.TabMinWidthForCloseButton;
+			sourceSizes.DisplayWindowPadding = style.DisplayWindowPadding;
+			sourceSizes.DisplaySafeAreaPadding = style.DisplaySafeAreaPadding;
+			sourceSizes.MouseCursorScale = style.MouseCursorScale;
+		}
 	}
 
 	public static void NewFrame()
@@ -136,7 +233,7 @@ public class ImGuiImpl
 
 		var io = ImGui.GetIO();
 
-		io.DisplaySize = new System.Numerics.Vector2(main_window.ClientRenderSize.x, main_window.ClientRenderSize.y);
+		io.DisplaySize = new Vector2(main_window.ClientRenderSize.x, main_window.ClientRenderSize.y);
 		io.DeltaTime = Engine.IFps;
 
 		if (Input.MouseGrab == false)
@@ -148,22 +245,16 @@ public class ImGuiImpl
 				ControlsApp.MouseDY = 0;
 			}
 
-			io.KeyCtrl = Input.IsKeyPressed(Input.KEY.ANY_CTRL);
-			io.KeyShift = Input.IsKeyPressed(Input.KEY.ANY_SHIFT);
-			io.KeyAlt = Input.IsKeyPressed(Input.KEY.ANY_ALT);
-			io.KeySuper = Input.IsKeyPressed(Input.KEY.ANY_CMD);
-
 			if (io.WantSetMousePos)
+			{
 				Input.MousePosition = new ivec2((int)io.MousePos.X, (int)io.MousePos.Y);
+			}
 
-			io.MousePos = new System.Numerics.Vector2(Input.MousePosition.x - main_window.ClientPosition.x, Input.MousePosition.y - main_window.ClientPosition.y);
+			io.MousePos = new Vector2(Input.MousePosition.x - main_window.ClientPosition.x, Input.MousePosition.y - main_window.ClientPosition.y);
 			io.MouseWheel += Input.MouseWheel;
 			io.MouseWheelH += Input.MouseWheelHorizontal;
 
-			if (io.WantCaptureMouse)
-				Input.MouseHandle = Input.MOUSE_HANDLE.SOFT;
-			else
-				Input.MouseHandle = prev_mouse_handle;
+			Input.MouseHandle = io.WantCaptureMouse ? Input.MOUSE_HANDLE.USER : prev_mouse_handle;
 		}
 
 		float scale = main_window.DpiScale;
@@ -217,63 +308,64 @@ public class ImGuiImpl
 		ImGui.DestroyContext();
 	}
 
-	static void on_key_pressed(Input.KEY key)
+	static void on_key_event(Input.KEY key, bool down)
 	{
 		var io = ImGui.GetIO();
-		io.KeysDown[(int)key] = true;
-		//return io.WantCaptureKeyboard ? 1 : 0;
-	}
+        io.AddKeyEvent(keymap[(int)key], down);
+
+        switch (keymap[(int)key])
+        {
+            case ImGuiKey.LeftCtrl:
+            case ImGuiKey.RightCtrl: io.AddKeyEvent(ImGuiKey.ModCtrl, down); break;
+            case ImGuiKey.LeftShift:
+            case ImGuiKey.RightShift: io.AddKeyEvent(ImGuiKey.ModShift, down); break;
+            case ImGuiKey.LeftAlt:
+            case ImGuiKey.RightAlt: io.AddKeyEvent(ImGuiKey.ModAlt, down); break;
+            case ImGuiKey.LeftSuper:
+            case ImGuiKey.RightSuper: io.AddKeyEvent(ImGuiKey.ModSuper, down); break;
+            default: break;
+        }
+    }
+
+	static void on_key_pressed(Input.KEY key)
+	{
+		on_key_event(key, true);
+
+    }
 
 	static void on_key_released(Input.KEY key)
 	{
-		var io = ImGui.GetIO();
-		io.KeysDown[(int)key] = false;
-		//return 0;
-	}
+        on_key_event(key, false);
+    }
+
+	static void on_button_event(Input.MOUSE_BUTTON button, bool down)
+	{
+        var io = ImGui.GetIO();
+
+        switch (button)
+        {
+            case Input.MOUSE_BUTTON.LEFT: io.AddMouseButtonEvent((int)ImGuiMouseButton.Left, down); break;
+            case Input.MOUSE_BUTTON.RIGHT: io.AddMouseButtonEvent((int)ImGuiMouseButton.Right, down); break;
+            case Input.MOUSE_BUTTON.MIDDLE: io.AddMouseButtonEvent((int)ImGuiMouseButton.Middle, down); break;
+            default: break;
+        }
+    }
 
 	static void on_button_pressed(Input.MOUSE_BUTTON button)
 	{
-		var io = ImGui.GetIO();
-		switch (button)
-		{
-			case Input.MOUSE_BUTTON.LEFT:
-				io.MouseDown[0] = true;
-				break;
-			case Input.MOUSE_BUTTON.RIGHT:
-				io.MouseDown[1] = true;
-				break;
-			case Input.MOUSE_BUTTON.MIDDLE:
-				io.MouseDown[2] = true;
-				break;
-		}
-		//return 0;
-	}
+		on_button_event(button, true);
+
+    }
 
 	static void on_button_released(Input.MOUSE_BUTTON button)
 	{
-		var io = ImGui.GetIO();
-		switch (button)
-		{
-			case Input.MOUSE_BUTTON.LEFT:
-				io.MouseDown[0] = false;
-				break;
-			case Input.MOUSE_BUTTON.RIGHT:
-				io.MouseDown[1] = false;
-				break;
-			case Input.MOUSE_BUTTON.MIDDLE:
-				io.MouseDown[2] = false;
-				break;
-		}
-		//return 0;
-	}
+        on_button_event(button, false);
+    }
 
 	static void on_unicode_key_pressed(uint key)
 	{
 		var io = ImGui.GetIO();
-
 		io.AddInputCharacter(key);
-
-		//return 0;
 	}
 
 	static unsafe void create_font_texture()
@@ -288,7 +380,7 @@ public class ImGuiImpl
 		font_texture.Create2D(width, height, Texture.FORMAT_RGBA8, Texture.SAMPLER_FILTER_LINEAR);
 
 		var blob = new Blob();
-		blob.SetData(pixels, Convert.ToUInt32(width) * Convert.ToUInt32(height) * 32);
+		blob.SetData(pixels, Convert.ToUInt64(width) * Convert.ToUInt64(height) * 32);
 		font_texture.SetBlob(blob);
 		blob.SetData(null, 0);
 
@@ -317,7 +409,7 @@ public class ImGuiImpl
 	static void create_imgui_material()
 	{
 		imgui_material = Materials.FindManualMaterial("imgui").Inherit();
-		imgui_material.SetTexture("imgui_texture", font_texture);
+		//imgui_material.SetTexture("imgui_texture", font_texture);
 	}
 
 	static void before_render_callback()
@@ -380,7 +472,7 @@ public class ImGuiImpl
 		imgui_mesh.AllocateIndices(draw_data.TotalIdxCount);
 		for (int i = 0; i < draw_data.CmdListsCount; ++i)
 		{
-			ImDrawListPtr cmd_list = draw_data.CmdListsRange[i];
+			ImDrawListPtr cmd_list = draw_data.CmdLists[i];
 
 			imgui_mesh.AddVertexArray(cmd_list.VtxBuffer.Data, cmd_list.VtxBuffer.Size);
 
@@ -403,7 +495,7 @@ public class ImGuiImpl
 			// Draw command lists
 			for (int i = 0; i < draw_data.CmdListsCount; ++i)
 			{
-				ImDrawListPtr cmd_list = draw_data.CmdListsRange[i];
+				ImDrawListPtr cmd_list = draw_data.CmdLists[i];
 				for (int j = 0; j < cmd_list.CmdBuffer.Size; ++j)
 				{
 					ImDrawCmdPtr cmd = cmd_list.CmdBuffer[j];
