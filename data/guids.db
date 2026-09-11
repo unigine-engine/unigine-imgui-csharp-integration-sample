@@ -1,0 +1,10 @@
+{
+	"004fed05d5cbc9c7b98def85d9e8221005af36b5": ".editor2/sandworm/urls.json",
+	"3c3ea8aa95c95368750eec2addca7fd0bbc9248a": "configs/default.controls",
+	"dea1e2b1c11cd84347097d31e3e733217baeca61": "configs/default.config",
+	"e39696b0bcdec5951bf2ae3037676345adcdd890": "imgui.basemat",
+	"e769f7bf39d545c7a2114e3f01c9fb113a3c52af": "imgui.world",
+	"ed7eef27cfc28de20cfc95a7b041d492b0ee9e17": "configs/default.user",
+	"f293dcb86452b70f504e64386ad97ebe79ed9f98": "configs/default.global",
+	"fccd802d0db11f73bead52ad7049f64a1d8e1fdd": "configs/editor.boot"
+}
