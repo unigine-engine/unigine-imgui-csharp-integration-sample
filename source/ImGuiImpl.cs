@@ -373,16 +373,13 @@ public class ImGuiImpl
 		var io = ImGui.GetIO();
 
 		io.Fonts.GetTexDataAsRGBA32(out byte* pixelData, out int width, out int height, out int bytesPerPixel);
-		var pixels = new byte[width * height * bytesPerPixel];
-		Marshal.Copy(new IntPtr(pixelData), pixels, 0, pixels.Length);
 
 		font_texture = new Texture();
 		font_texture.Create2D(width, height, Texture.FORMAT_RGBA8, Texture.SAMPLER_FILTER_LINEAR);
 
 		var blob = new Blob();
-		blob.SetData(pixels, Convert.ToUInt64(width) * Convert.ToUInt64(height) * 32);
+		blob.Write(new IntPtr(pixelData), Convert.ToUInt64(width * height * bytesPerPixel));
 		font_texture.SetBlob(blob);
-		blob.SetData(null, 0);
 
 		io.Fonts.TexID = font_texture.GetPtr();
 	}

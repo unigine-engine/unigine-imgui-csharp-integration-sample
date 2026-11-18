@@ -4,11 +4,36 @@
         "debug": false,
         "microprofile_enabled": false
     },
-    "id": "7b07a766-26cd-46b2-8168-584a8a55f0e3",
+    "id": "7f389b5f-bf50-45d0-9e86-0048b74d39d2",
+    "os_configs": {
+        "linux": {
+            "sdk": {
+                "edition": "academic",
+                "internal_version": 59,
+                "key": "tier4_bin_linux-2.22",
+                "name": "UNIGINE 2 Academic Research",
+                "path": "",
+                "type": "bin",
+                "version": "2.22"
+            },
+            "up_to_date": true
+        },
+        "windows": {
+            "sdk": {
+                "edition": "academic",
+                "internal_version": 59,
+                "key": "tier4_bin_windows-2.22",
+                "name": "UNIGINE 2 Academic Research",
+                "path": "",
+                "type": "bin",
+                "version": "2.22"
+            },
+            "up_to_date": true
+        }
+    },
     "project_settings": {
         "addons": [],
         "ai_docs": false,
-        "api": "csdnc",
         "assets": [],
         "build_tool": false,
         "component_system": false,
@@ -22,6 +47,14 @@
         "launcher_console": true,
         "launcher_gui": false,
         "name": "unigine-imgui-csharp-integration-sample",
+        "per_os": {
+            "linux": {
+                "api": "csdnc"
+            },
+            "windows": {
+                "api": "csdnc"
+            }
+        },
         "plugin_name": "",
         "plugin_vendor": "",
         "plugins": [
@@ -32,7 +65,7 @@
             "UnigineGeodetics",
             "UnigineUsdExchanger"
         ],
-        "precision": 1,
+        "precision": 0,
         "project_template": [
             "empty-dnc"
         ],
@@ -40,9 +73,9 @@
         "samples_pack": "",
         "starting_world": "default",
         "sw_distributed": false,
-        "template_id": "template_empty_csharp2.22.0_2cross",
+        "template_id": "template_empty_csharp2.22.0_3cross",
         "template_name": "empty_csharp",
-        "template_version": "2.22.0_2"
+        "template_version": "2.22.0_3"
     },
     "run_settings": {
         "app_name": "",
@@ -52,14 +85,5 @@
         "microprofile_enabled": false,
         "rpath": []
     },
-    "sdk": {
-        "edition": "sim",
-        "internal_version": 59,
-        "key": "tier3_bin_windows-2.22",
-        "name": "UNIGINE 2 Sim",
-        "path": "",
-        "type": "bin",
-        "version": "2.22"
-    },
-    "version": "2"
+    "version": "3"
 }
