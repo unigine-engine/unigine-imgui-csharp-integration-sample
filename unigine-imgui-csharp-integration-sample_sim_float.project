@@ -4,11 +4,36 @@
         "debug": false,
         "microprofile_enabled": false
     },
-    "id": "8eb9d30e-96e1-4844-bb0b-38a64158cd03",
+    "id": "9a523cff-a603-417d-95a7-275ce339ba77",
+    "os_configs": {
+        "linux": {
+            "sdk": {
+                "edition": "sim",
+                "internal_version": 59,
+                "key": "tier3_bin_linux-2.22",
+                "name": "UNIGINE 2 Sim",
+                "path": "",
+                "type": "bin",
+                "version": "2.22"
+            },
+            "up_to_date": true
+        },
+        "windows": {
+            "sdk": {
+                "edition": "sim",
+                "internal_version": 59,
+                "key": "tier3_bin_windows-2.22",
+                "name": "UNIGINE 2 Sim",
+                "path": "",
+                "type": "bin",
+                "version": "2.22"
+            },
+            "up_to_date": true
+        }
+    },
     "project_settings": {
         "addons": [],
         "ai_docs": false,
-        "api": "csdnc",
         "assets": [],
         "build_tool": false,
         "component_system": false,
@@ -22,6 +47,14 @@
         "launcher_console": true,
         "launcher_gui": false,
         "name": "unigine-imgui-csharp-integration-sample",
+        "per_os": {
+            "linux": {
+                "api": "csdnc"
+            },
+            "windows": {
+                "api": "csdnc"
+            }
+        },
         "plugin_name": "",
         "plugin_vendor": "",
         "plugins": [
@@ -32,7 +65,7 @@
             "UnigineGeodetics",
             "UnigineUsdExchanger"
         ],
-        "precision": 1,
+        "precision": 0,
         "project_template": [
             "empty-dnc"
         ],
@@ -40,9 +73,9 @@
         "samples_pack": "",
         "starting_world": "default",
         "sw_distributed": false,
-        "template_id": "template_empty_csharp2.22.0_2cross",
+        "template_id": "template_empty_csharp2.22.0_3cross",
         "template_name": "empty_csharp",
-        "template_version": "2.22.0_2"
+        "template_version": "2.22.0_3"
     },
     "run_settings": {
         "app_name": "",
@@ -52,14 +85,5 @@
         "microprofile_enabled": false,
         "rpath": []
     },
-    "sdk": {
-        "edition": "entertainment",
-        "internal_version": 59,
-        "key": "tier0_bin_pro_windows-2.22",
-        "name": "UNIGINE 2 Entertainment",
-        "path": "",
-        "type": "bin",
-        "version": "2.22"
-    },
-    "version": "2"
+    "version": "3"
 }

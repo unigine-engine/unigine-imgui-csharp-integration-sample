@@ -4,11 +4,36 @@
         "debug": false,
         "microprofile_enabled": false
     },
-    "id": "645caaa8-1ef0-42c7-954a-4b9a787af305",
+    "id": "1a2d154e-36b7-423e-9e1b-ab70ff42e70c",
+    "os_configs": {
+        "linux": {
+            "sdk": {
+                "edition": "Engineering",
+                "internal_version": 59,
+                "key": "tier2_bin_linux-2.22",
+                "name": "UNIGINE 2 Engineering",
+                "path": "",
+                "type": "bin",
+                "version": "2.22"
+            },
+            "up_to_date": true
+        },
+        "windows": {
+            "sdk": {
+                "edition": "Engineering",
+                "internal_version": 59,
+                "key": "tier2_bin_windows-2.22",
+                "name": "UNIGINE 2 Engineering",
+                "path": "",
+                "type": "bin",
+                "version": "2.22"
+            },
+            "up_to_date": true
+        }
+    },
     "project_settings": {
         "addons": [],
         "ai_docs": false,
-        "api": "csdnc",
         "assets": [],
         "build_tool": false,
         "component_system": false,
@@ -22,6 +47,14 @@
         "launcher_console": true,
         "launcher_gui": false,
         "name": "unigine-imgui-csharp-integration-sample",
+        "per_os": {
+            "linux": {
+                "api": "csdnc"
+            },
+            "windows": {
+                "api": "csdnc"
+            }
+        },
         "plugin_name": "",
         "plugin_vendor": "",
         "plugins": [
@@ -40,9 +73,9 @@
         "samples_pack": "",
         "starting_world": "default",
         "sw_distributed": false,
-        "template_id": "template_empty_csharp2.22.0_2cross",
+        "template_id": "template_empty_csharp2.22.0_3cross",
         "template_name": "empty_csharp",
-        "template_version": "2.22.0_2"
+        "template_version": "2.22.0_3"
     },
     "run_settings": {
         "app_name": "",
@@ -52,14 +85,5 @@
         "microprofile_enabled": false,
         "rpath": []
     },
-    "sdk": {
-        "edition": "community",
-        "internal_version": 59,
-        "key": "tier0_bin_windows-2.22",
-        "name": "UNIGINE 2 Community",
-        "path": "",
-        "type": "bin",
-        "version": "2.22"
-    },
-    "version": "2"
+    "version": "3"
 }

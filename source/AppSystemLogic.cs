@@ -14,7 +14,7 @@ namespace UnigineApp
 
         public override bool Init()
         {
-            Engine.BackgroundUpdate = Engine.BACKGROUND_UPDATE.BACKGROUND_UPDATE_RENDER_NON_MINIMIZED;
+            Engine.BackgroundUpdate = Engine.BACKGROUND_UPDATE.RENDER_NON_MINIMIZED;
             Unigine.Console.Run("world_load data/imgui");
 
             // create texture
